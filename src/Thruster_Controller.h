@@ -1,8 +1,16 @@
-#ifndef Thruster_Controller
-#define Thruster_Controller
+/*
+ * Thruster_Controller.h
+ *
+ *  Created on: Nov 4, 2019
+ *      Author: ricardo
+ */
+
+#ifndef SRC_THRUSTER_CONTROLLER_H_
+#define SRC_THRUSTER_CONTROLLER_H_
 
 #include <Servo.h>
 #include "PID_v1.h"
+
 
 class Thruster_Controller{
 	public:
@@ -13,10 +21,12 @@ class Thruster_Controller{
 
 
 		//updates the PID and the output to the thrusters
-		void setPWM(int);
-		
+		void setPWM(double pwm_signal);
+
 	private:
-		Servo thrusterServo;		
+		Servo thrusterServo;
 };
 
-#endif
+
+
+#endif /* SRC_THRUSTER_CONTROLLER_H_ */

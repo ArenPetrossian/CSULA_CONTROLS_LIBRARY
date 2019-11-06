@@ -1,21 +1,13 @@
-/* Robosub 2019-2020 Stabilization Code 
- *  Current Revision:102719
- *  Ricardo Medina
- *  
- *  -- Revision Log --
- *  
- * 
+/*
+ * Sub_Controller.h
  *
- * -- To DO --
- * 
- * 
- * -----USE------ 
- *  Header File for the SUB_Controller
+ *  Created on: Nov 4, 2019
+ *      Author: ricardo
  */
 
+#ifndef SRC_SUB_CONTROLLER_H_
+#define SRC_SUB_CONTROLLER_H_
 
-#ifndef Sub_Controller
-#define Sub_Controller
 
 #include "Horizontal_Controller.h"
 
@@ -27,10 +19,14 @@ class Sub_Controller{
 
 //		Vertical_Controller v_controller;
 	public:
-		Sub_Controller(int, int, int, int); //set left thruster pin, right thruster pin
+		Sub_Controller(int left_pin, int right_pin, double *hor_PID_konstants, double *ang_PID_konstants); //set left thruster pin, right thruster pin
 						//kp, ki, kd  in the array in that order
-		void setHorizontalThrusters(int); //set pwm target for horizontal thrusters
-		void set_IMU_angle_reading(int);
-		void set_IMU_distance_reading(int);
+		void setHorizontalSetPoints(double distance, double angle); //set pwm target for horizontal thrusters
+		void update(double distance, double angle);//update the input values from navigation
+//		void set_IMU_angle_reading(double *pwm_signal);
+//		void set_IMU_distance_reading(double *pwm_signal);
+
 };
-#endif
+
+
+#endif /* SRC_SUB_CONTROLLER_H_ */
